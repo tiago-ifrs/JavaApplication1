@@ -6,6 +6,7 @@
 package javaapplication1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -46,11 +47,11 @@ public class Valores implements ValoresITF {
     @Override
     public int size() {
         /*
-        int s = 0;
-        if (this.vetor != null) {
-            s = this.vetor.size();
-        }
-        return s;*/
+         int s = 0;
+         if (this.vetor != null) {
+         s = this.vetor.size();
+         }
+         return s;*/
         return this.vetor.size();
     }
 
@@ -62,45 +63,63 @@ public class Valores implements ValoresITF {
         }
         return acc / size();
     }
+    /*
+     @Override
+     public int greater() {
+     int maior = 0;
+     int at;
+     if (size() > 0) {
+     for (int i = 0; i < size(); i++) {
+     at = vetor.get(i);
+     if (at > maior) {
+     maior = at;
+     }
+     }
+     return maior;
+     } else {
+     return -1;
+     }
+     }
+     */
 
     @Override
     public int greater() {
-        int maior = 0;
-        int at;
-        if (size() > 0) {
-            for (int i = 0; i < size(); i++) {
-                at = vetor.get(i);
-                if (at > maior) {
-                    maior = at;
-                }
-            }
-            return maior;
-        } else {
+        if (vetor.isEmpty()) {
             return -1;
+        } else {
+            return Collections.max(vetor);
         }
     }
 
+    /*
+     @Override
+     public int lower() {
+     int menor;
+     int at;
+     if (size() > 0) {
+     menor = vetor.get(0);
+     for (int i = 0; i < size(); i++) {
+     at = vetor.get(i);
+     if (at < menor) {
+     menor = at;
+     }
+     }
+     return menor;
+     } else {
+     return -1;
+     }
+     }*/
     @Override
     public int lower() {
-        int menor;
-        int at;
-        if (size() > 0) {
-            menor = vetor.get(0);
-            for (int i = 0; i < size(); i++) {
-                at = vetor.get(i);
-                if (at < menor) {
-                    menor = at;
-                }
-            }
-            return menor;
-        } else {
+        if (vetor.isEmpty()) {
             return -1;
+        } else {
+            return Collections.min(vetor);
         }
     }
 
     public Valores() {
         this.vetor = new ArrayList();
-
     }
 
 }
